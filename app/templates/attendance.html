@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Attendance{% endblock %} {% block
+content %}
+<h1>Manage Attendance</h1>
+<form method="POST" action="/attendance">
+  <input type="number" name="student_id" placeholder="د شاګرد ID" required />
+  <input type="number" name="course_id" placeholder="د کورس ID" required />
+  <input type="date" name="date" required />
+  <select name="status" required>
+    <option value="Present">حاضر</option>
+    <option value="Absent">غیر حاضر</option>
+  </select>
+  <button type="submit">حاضري ثبت کړئ</button>
+</form>
+<h2>د حاضرۍ لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>شاګرد</th>
+    <th>کورس</th>
+    <th>نېټه</th>
+    <th>حالت</th>
+  </tr>
+  {% for att in attendance %}
+  <tr>
+    <td>{{ att[0] }}</td>
+    <td>{{ att[1] }}</td>
+    <td>{{ att[2] }}</td>
+    <td>{{ att[3] }}</td>
+    <td>{{ att[4] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

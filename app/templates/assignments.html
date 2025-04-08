@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Assignments{% endblock %} {% block
+content %}
+<h1>Manage Assignments</h1>
+<form method="POST" action="/assignments" enctype="multipart/form-data">
+  <input type="text" name="title" placeholder="عنوان" required />
+  <textarea name="description" placeholder="توضیحات"></textarea>
+  <input type="date" name="assigned_date" required />
+  <input type="date" name="due_date" required />
+  <input type="file" name="file" />
+  <button type="submit">دنده ثبت کړئ</button>
+</form>
+<h2>د کورنۍ دندو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>عنوان</th>
+    <th>توضیحات</th>
+    <th>د ورکړې نېټه</th>
+    <th>د سپارلو نېټه</th>
+    <th>فایل</th>
+  </tr>
+  {% for assignment in assignments %}
+  <tr>
+    <td>{{ assignment[0] }}</td>
+    <td>{{ assignment[1] }}</td>
+    <td>{{ assignment[2] }}</td>
+    <td>{{ assignment[3] }}</td>
+    <td>{{ assignment[4] }}</td>
+    <td>{{ assignment[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Schedule{% endblock %} {% block
+content %}
+<h1>Manage Schedule</h1>
+<form method="POST" action="/schedule">
+  <input type="number" name="course_id" placeholder="د کورس ID" required />
+  <input type="number" name="teacher_id" placeholder="د استاد ID" required />
+  <select name="day" required>
+    <option value="Monday">دوشنبه</option>
+    <option value="Tuesday">سه‌شنبه</option>
+    <option value="Wednesday">چهارشنبه</option>
+    <option value="Thursday">پنج‌شنبه</option>
+    <option value="Friday">جمعه</option>
+    <option value="Saturday">شنبه</option>
+    <option value="Sunday">یک‌شنبه</option>
+  </select>
+  <input type="time" name="start_time" required />
+  <input type="time" name="end_time" required />
+  <button type="submit">مهال‌وېش ثبت کړئ</button>
+</form>
+<h2>د مهال‌وېش لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>کورس</th>
+    <th>استاد</th>
+    <th>ورځ</th>
+    <th>د پیل وخت</th>
+    <th>د پای وخت</th>
+  </tr>
+  {% for sch in schedule %}
+  <tr>
+    <td>{{ sch[0] }}</td>
+    <td>{{ sch[1] }}</td>
+    <td>{{ sch[2] }}</td>
+    <td>{{ sch[3] }}</td>
+    <td>{{ sch[4] }}</td>
+    <td>{{ sch[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

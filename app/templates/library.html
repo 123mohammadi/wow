@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block title %}Library{% endblock %} {% block
+content %}
+<h1>Manage Library</h1>
+<form method="POST" action="/library">
+  <input type="text" name="title" placeholder="د کتاب عنوان" required />
+  <input type="text" name="author" placeholder="لیکوال" required />
+  <input
+    type="text"
+    name="isbn"
+    placeholder="ISBN شمېره"
+    pattern="[0-9]{10}|[0-9]{13}"
+    required
+  />
+  <select name="availability" required>
+    <option value="Available">موجود</option>
+    <option value="Unavailable">غیر موجود</option>
+  </select>
+  <button type="submit">کتاب ثبت کړئ</button>
+</form>
+<h2>د کتابونو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>عنوان</th>
+    <th>لیکوال</th>
+    <th>ISBN</th>
+    <th>موجودیت</th>
+  </tr>
+  {% for book in books %}
+  <tr>
+    <td>{{ book[0] }}</td>
+    <td>{{ book[1] }}</td>
+    <td>{{ book[2] }}</td>
+    <td>{{ book[3] }}</td>
+    <td>{{ book[4] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

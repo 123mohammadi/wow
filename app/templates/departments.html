@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Departments{% endblock %} {% block
+content %}
+<h1>Manage Departments</h1>
+<form method="POST" action="/departments">
+  <input type="text" name="name" placeholder="د څانګې نوم" required />
+  <button type="submit">څانګه اضافه کړئ</button>
+</form>
+<h2>د څانګو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>نوم</th>
+  </tr>
+  {% for dept in departments %}
+  <tr>
+    <td>{{ dept[0] }}</td>
+    <td>{{ dept[1] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

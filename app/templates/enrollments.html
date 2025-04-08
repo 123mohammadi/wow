@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block title %}Enrollments{% endblock %} {% block
+content %}
+<h1>Manage Enrollments</h1>
+<form method="POST" action="/enrollments">
+  <select name="student_id" required>
+    <option value="">شاګرد انتخاب کړئ</option>
+    {% for student in students %}
+    <option value="{{ student[0] }}">{{ student[1] }}</option>
+    {% endfor %}
+  </select>
+  <select name="course_id" required>
+    <option value="">کورس انتخاب کړئ</option>
+    {% for course in courses %}
+    <option value="{{ course[0] }}">{{ course[1] }}</option>
+    {% endfor %}
+  </select>
+  <input type="date" name="enrollment_date" required />
+  <button type="submit">داخله ثبت کړئ</button>
+</form>
+<h2>د داخلې لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>شاګرد</th>
+    <th>کورس</th>
+    <th>نېټه</th>
+  </tr>
+  {% for enrollment in enrollments %}
+  <tr>
+    <td>{{ enrollment[0] }}</td>
+    <td>{{ enrollment[1] }}</td>
+    <td>{{ enrollment[2] }}</td>
+    <td>{{ enrollment[3] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% block title %}Feedback{% endblock %} {% block
+content %}
+<h1>Manage Feedback</h1>
+<form method="POST" action="/feedback">
+  <select name="student_id" required>
+    <option value="">شاګرد انتخاب کړئ</option>
+    {% for student in students %}
+    <option value="{{ student[0] }}">{{ student[1] }}</option>
+    {% endfor %}
+  </select>
+  <select name="teacher_id" required>
+    <option value="">استاد انتخاب کړئ</option>
+    {% for teacher in teachers %}
+    <option value="{{ teacher[0] }}">{{ teacher[1] }}</option>
+    {% endfor %}
+  </select>
+  <select name="course_id" required>
+    <option value="">کورس انتخاب کړئ</option>
+    {% for course in courses %}
+    <option value="{{ course[0] }}">{{ course[1] }}</option>
+    {% endfor %}
+  </select>
+  <textarea name="message" placeholder="پیغام" required></textarea>
+  <input type="date" name="feedback_date" required />
+  <button type="submit">فیډبک ثبت کړئ</button>
+</form>
+<h2>د فیډبک لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>شاګرد</th>
+    <th>استاد</th>
+    <th>کورس</th>
+    <th>پیغام</th>
+    <th>نېټه</th>
+  </tr>
+  {% for fb in feedback %}
+  <tr>
+    <td>{{ fb[0] }}</td>
+    <td>{{ fb[1] }}</td>
+    <td>{{ fb[2] }}</td>
+    <td>{{ fb[3] }}</td>
+    <td>{{ fb[4] }}</td>
+    <td>{{ fb[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}Grades{% endblock %} {% block content
+%}
+<h1>Manage Grades</h1>
+<form method="POST" action="/grades">
+  <input type="number" name="student_id" placeholder="د شاګرد ID" required />
+  <input type="number" name="course_id" placeholder="د کورس ID" required />
+  <input type="number" name="grade" placeholder="نمره" step="0.01" required />
+  <button type="submit">نمره ثبت کړئ</button>
+</form>
+<h2>د نمرو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>شاګرد</th>
+    <th>کورس</th>
+    <th>نمره</th>
+  </tr>
+  {% for grade in grades %}
+  <tr>
+    <td>{{ grade[0] }}</td>
+    <td>{{ grade[1] }}</td>
+    <td>{{ grade[2] }}</td>
+    <td>{{ grade[3] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

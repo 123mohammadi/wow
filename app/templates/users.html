@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Users{% endblock %} {% block content
+%}
+<h1>Manage Users</h1>
+<form method="POST" action="/users">
+  <input type="text" name="username" placeholder="کارن نوم" required />
+  <input type="password" name="password" placeholder="پاسورډ" required />
+  <select name="role" required>
+    <option value="Admin">ادمین</option>
+    <option value="Teacher">استاد</option>
+    <option value="Student">شاګرد</option>
+  </select>
+  <button type="submit">کارن اضافه کړئ</button>
+</form>
+<h2>د کارونکو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>کارن نوم</th>
+    <th>رول</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+    <td>{{ user[0] }}</td>
+    <td>{{ user[1] }}</td>
+    <td>{{ user[2] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

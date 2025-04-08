@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %}Notifications{% endblock %} {% block
+content %}
+<h1>Manage Notifications</h1>
+<form method="POST" action="/notifications">
+  <input type="text" name="title" placeholder="عنوان" required />
+  <textarea name="message" placeholder="پیغام" required></textarea>
+  <select name="target" required>
+    <option value="Teachers">استادان</option>
+    <option value="Students">شاګردان</option>
+    <option value="All">ټول</option>
+  </select>
+  <input type="date" name="published_date" required />
+  <button type="submit">اعلان ثبت کړئ</button>
+</form>
+<h2>د اعلاناتو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>عنوان</th>
+    <th>پیغام</th>
+    <th>هدف</th>
+    <th>نېټه</th>
+  </tr>
+  {% for notif in notifications %}
+  <tr>
+    <td>{{ notif[0] }}</td>
+    <td>{{ notif[1] }}</td>
+    <td>{{ notif[2] }}</td>
+    <td>{{ notif[3] }}</td>
+    <td>{{ notif[4] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

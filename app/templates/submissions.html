@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Submissions{% endblock %} {% block
+content %}
+<h1>Manage Submissions</h1>
+<form method="POST" action="/submissions" enctype="multipart/form-data">
+  <select name="student_id" required>
+    <option value="">شاګرد انتخاب کړئ</option>
+    {% for student in students %}
+    <option value="{{ student[0] }}">{{ student[1] }}</option>
+    {% endfor %}
+  </select>
+  <select name="assignment_id" required>
+    <option value="">دنده انتخاب کړئ</option>
+    {% for assignment in assignments %}
+    <option value="{{ assignment[0] }}">{{ assignment[1] }}</option>
+    {% endfor %}
+  </select>
+  <input type="date" name="submission_date" required />
+  <input type="file" name="file" />
+  <input type="number" name="grade" placeholder="نمره (اختیاري)" step="0.01" />
+  <button type="submit">سپارنه ثبت کړئ</button>
+</form>
+<h2>د سپارنو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>شاګرد</th>
+    <th>دنده</th>
+    <th>د سپارلو نېټه</th>
+    <th>فایل</th>
+    <th>نمره</th>
+  </tr>
+  {% for sub in submissions %}
+  <tr>
+    <td>{{ sub[0] }}</td>
+    <td>{{ sub[1] }}</td>
+    <td>{{ sub[2] }}</td>
+    <td>{{ sub[3] }}</td>
+    <td>{{ sub[4] }}</td>
+    <td>{{ sub[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

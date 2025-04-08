@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %}Students{% endblock %} {% block
+content %}
+<h1>Manage Students</h1>
+<form method="POST" action="/students">
+  <input type="text" name="name" placeholder="نوم" required />
+  <input type="email" name="email" placeholder="ایمیل" required />
+  <input type="text" name="phone" placeholder="ټیلیفون" />
+  <button type="submit">شاګرد اضافه کړئ</button>
+</form>
+<h2>د شاګردانو لېست</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>نوم</th>
+    <th>ایمیل</th>
+    <th>ټیلیفون</th>
+  </tr>
+  {% for student in students %}
+  <tr>
+    <td>{{ student[0] }}</td>
+    <td>{{ student[1] }}</td>
+    <td>{{ student[2] }}</td>
+    <td>{{ student[3] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
